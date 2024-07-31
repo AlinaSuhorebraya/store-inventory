@@ -1,1 +1,1 @@
-# store-inventory
+# store-inventory application
