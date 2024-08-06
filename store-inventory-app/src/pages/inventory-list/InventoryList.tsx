@@ -18,6 +18,7 @@ const InventoryList: React.FC = () => {
 	const [productName, setProductName] = useState<string>('');
 	const [quantity, setQuantity] = useState<number>(0);
 	const navigate = useNavigate();
+	
 	useEffect(() => {
 		const fetchData = async () => {
 			const inventoryData: InventoryItem[] = await getInventory();
@@ -29,9 +30,11 @@ const InventoryList: React.FC = () => {
 	}, []);
 	
 	const handleAdd = useCallback(async () => {
-		if (productName && quantity > 0) {
+		if (!productName || quantity < 0) {
+			console.error(`Product name shouldn't be empty or quantity should be > 0`)
+		} else {
 			const newItem: InventoryItem = {name: productName, quantity};
-			await addInventoryItem(productName, quantity);
+			await addInventoryItem([...inventory, newItem]);
 			setInventory((prevInventory) => [...prevInventory, newItem]);
 			setProductName('');
 			setQuantity(0);
@@ -42,9 +45,11 @@ const InventoryList: React.FC = () => {
 		navigate(`/product`);
 	}
 	
-	const handleRemove = useCallback((itemName: string) => {
-		setInventory((prevInventory) => prevInventory.filter(item => item.name !== itemName));
-	}, [])
+	const handleRemove = useCallback(async (itemName: string) => {
+		const filteredInventory = inventory.filter(item => item.name === itemName)
+		await addInventoryItem(filteredInventory)
+		setInventory(filteredInventory);
+	}, [inventory])
 	
 	return (
 		<div className={styles.container}>

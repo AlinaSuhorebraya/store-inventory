@@ -35,9 +35,9 @@ export const getInventory = async () => {
 	}
 };
 
-export const addInventoryItem = async (name: string, quantity: number) => {
+export const addInventoryItem = async (data: {name: string, quantity: number}[]) => {
 	try {
-		const response = await axios.post(`${API_URL}/inventory`, [{ name, quantity }]);
+		const response = await axios.post(`${API_URL}/inventory`, data);
 		return response.data;
 	} catch (error) {
 		return handleApiError(error);
