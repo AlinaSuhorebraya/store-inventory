@@ -1,0 +1,21 @@
+:root {
+  --padding-small: 5px;
+  --padding-medium: 6px 10px;
+  --margin-small: 10px;
+  --margin-medium: 12px;
+  --background-color-green: green;
+  --background-color-darkgray: darkgray;
+  --background-color-red: red;
+  --color-white: white;
+  --border-radius: 4px;
+  --cursor-pointer: pointer;
+}
+
+@mixin button-styles($bg-color, $padding: var(--padding-medium), $color: var(--color-white)) {
+  padding: $padding;
+  background-color: $bg-color;
+  color: $color;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: var(--cursor-pointer);
+}

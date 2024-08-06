@@ -1,0 +1,18 @@
+@import '../../App.scss';
+
+.container {
+  padding: 20px;
+}
+
+.productName {
+  padding: var(--padding-small);
+  margin-right: var(--margin-small);
+}
+
+.button {
+  @include button-styles(var(--background-color-green));
+}
+
+.navigateButton {
+  @include button-styles(var(--background-color-darkgray));
+}

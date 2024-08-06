@@ -1,0 +1,39 @@
+@import '../../App.scss';
+
+.container {
+  padding: 20px;
+}
+
+.select {
+  margin-right: var(--margin-small);
+  padding: var(--padding-small);
+}
+
+.quantity {
+  margin-right: var(--margin-small);
+  padding: var(--padding-small);
+  width: 60px;
+}
+
+.addButton {
+  @include button-styles(var(--background-color-green));
+}
+
+.navigateButton {
+  @include button-styles(var(--background-color-darkgray));
+}
+
+.removeButton {
+  @include button-styles(var(--background-color-red));
+  margin-left: var(--margin-medium);
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.listItem {
+  padding: 8px;
+  margin-bottom: 6px;
+}
